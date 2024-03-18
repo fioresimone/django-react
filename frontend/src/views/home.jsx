@@ -1,16 +1,27 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../Store/auth';
+import Dashboard from './dashboard';
+import { useEffect } from 'react';
 
 const Home = () => {
+    const navigate = useNavigate();
     const [isLoggedIn, user] = useAuthStore((state) => [
         state.isLoggedIn,
         state.user,
     ]);
-    return (
+
+    const isLogged = isLoggedIn();
+
+    useEffect(() => {
+        if (isLogged) navigate('/dashboard');
+    }, [isLogged]);
+
+    return <div>{isLoggedIn() ? <Dashboard /> : <LoggedOutView />}</div>;
+    /* return (
         <div>
             {isLoggedIn() ? <LoggedInView user={user()} /> : <LoggedOutView />}
         </div>
-    );
+    ); */
 };
 
 const LoggedInView = ({ user }) => {

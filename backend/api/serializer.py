@@ -14,7 +14,10 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         # Add custom claims
         token['username'] = user.username
         token['email'] = user.email
-        # ...
+        
+        groups = user.groups.all()
+        group_names = [group.name for group in groups]
+        token['groups'] = group_names
 
         return token
 
@@ -44,3 +47,10 @@ class RegisterSerializer(serializers.ModelSerializer):
         user.save()
 
         return user
+
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'email']
