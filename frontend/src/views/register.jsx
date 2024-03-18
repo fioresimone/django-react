@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { register } from '../utils/auth';
 import { useNavigate } from 'react-router-dom';
-import { useAuthStore } from '../store/auth';
+import { useAuthStore } from '../Store/auth';
 
 function Register() {
     const [username, setUsername] = useState('');

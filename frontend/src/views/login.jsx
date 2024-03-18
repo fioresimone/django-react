@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { login } from '../utils/auth';
 import { useNavigate } from 'react-router-dom';
-import { useAuthStore } from '../store/auth';
+import { useAuthStore } from '../Store/auth';
 
 const Login = () => {
     const navigate = useNavigate();
