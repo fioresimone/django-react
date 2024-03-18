@@ -7,13 +7,13 @@ import PrivateRoute from './layouts/PrivateRoute';
 import Logout from './views/logout';
 import Private from './views/private';
 import Register from './views/register';
-import Dashboard from './views/dashboard';
 
 function App() {
     return (
         <BrowserRouter>
             <MainWrapper>
                 <Routes>
+                    <Route path="/" element={<Login />} />
                     <Route
                         path="/private"
                         element={
@@ -22,12 +22,17 @@ function App() {
                             </PrivateRoute>
                         }
                     />
-                    <Route path="/" element={<Home />} />
-                    <Route path="/login" element={<Login />} />
+                    <Route
+                        path="/home"
+                        element={
+                            <PrivateRoute>
+                                <Home />
+                            </PrivateRoute>
+                        }
+                    />
+
                     <Route path="/register" element={<Register />} />
                     <Route path="/logout" element={<Logout />} />
-
-                    <Route path="/dashboard" element={<Dashboard />} />
                 </Routes>
             </MainWrapper>
         </BrowserRouter>

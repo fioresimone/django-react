@@ -11,7 +11,7 @@ const Login = () => {
 
     useEffect(() => {
         if (isLoggedIn()) {
-            navigate('/');
+            navigate('/home');
         }
     }, []);
 
@@ -26,7 +26,7 @@ const Login = () => {
         if (error) {
             alert(error);
         } else {
-            navigate('/');
+            navigate('/home');
             resetForm();
         }
     };
